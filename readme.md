@@ -1,60 +1,39 @@
-# C++ Boilerplate
-[![Build Status](https://travis-ci.org/dpiet/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/dpiet/cpp-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/dpiet/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/dpiet/cpp-boilerplate?branch=master)
----
 
-## Overview
+# C++ Valgrind exercise
 
-Simple starter C++ project with:
+## Overview 
 
-- cmake
-- googletest
+The codes in the ```valgrind_branch``` contained memory leak and data uninitialization errors which were observed using Valgrind and rectified. 
 
-## Standard install via command-line
+## Running the Program
 ```
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
+git clone https://github.com/adarshmalapaka/valgrind-exercise
 cd <path to repository>
 mkdir build
 cd build
 cmake ..
 make
-Run tests: ./test/cpp-test
 Run program: ./app/shell-app
 ```
 
-## Building for code coverage (for assignments beginning in Week 4)
-```
-sudo apt-get install lcov
-cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug ../
-make
-make code_coverage
-```
-This generates a index.html page in the build/coverage sub-directory that can be viewed locally in a web browser.
-
-## Working with Eclipse IDE ##
-
-## Installation
-
-In your Eclipse workspace directory (or create a new one), checkout the repo (and submodules)
-```
-mkdir -p ~/workspace
-cd ~/workspace
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
-```
-
-In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
+### Valgrind
 
 ```
-cd ~/workspace
-mkdir -p boilerplate-eclipse
-cd boilerplate-eclipse
-cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../cpp-boilerplate/
+sudo apt install valgrind
+cd build
+valgrind --leak-check=full -v ./app/shell-app >& ../results/valgrind_rectified_result.txt
 ```
 
-## Import
+### KCachegrind
 
-Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
-Select "boilerplate-eclipse" directory created previously as root directory -> Finish
+```
+sudo apt-get install -y kcachegrind
+cd build
+valgrind --tool=callgrind  ./app/shell-app
+kcachegrind
+```
+
+Open the ```callgrind.out.xxxx``` file in the GUI.
 
 # Edit
 
