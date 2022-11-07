@@ -7,7 +7,7 @@ The codes in the ```valgrind_branch``` contained memory leak and data uninitiali
 
 ## Running the Program
 ```
-git clone https://github.com/adarshmalapaka/valgrind-exercise
+git clone https://github.com/harika-pendli/valgrind_cpp.git
 cd <path to repository>
 mkdir build
 cd build
