@@ -3,7 +3,7 @@
 
 ## Overview 
 
-The codes in the ```valgrind_branch``` contained memory leak and data uninitialization errors which were observed using Valgrind and rectified. 
+The codes in the ```valgrind_exercise``` contained memory leak and data uninitialization errors which were observed using Valgrind and rectified. 
 
 ## Running the Program
 ```
